@@ -23,3 +23,9 @@ verify_jwt = true
 
 [functions.wallet-refund]
 verify_jwt = true
+
+[functions.alipay-notify]
+verify_jwt = false
+
+[functions.create-alipay-page-pay]
+verify_jwt = true

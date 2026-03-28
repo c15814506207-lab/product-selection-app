@@ -39,3 +39,8 @@ export const GENERATE_REPORT_URL = pickUrl(
 export const WALLET_DEBIT_URL = pickUrl(import.meta.env.VITE_EDGE_WALLET_DEBIT_URL, 'wallet-debit')
 
 export const WALLET_REFUND_URL = pickUrl(import.meta.env.VITE_EDGE_WALLET_REFUND_URL, 'wallet-refund')
+
+export const CREATE_ALIPAY_PAGE_PAY_URL = pickUrl(
+  import.meta.env.VITE_EDGE_CREATE_ALIPAY_PAGE_PAY_URL,
+  'create-alipay-page-pay',
+)

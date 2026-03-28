@@ -1450,6 +1450,56 @@
   font-size: 0.9rem;
 }
 
+.settings-panel__legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 0;
+}
+
+.settings-panel__legal-link {
+  color: rgba(180, 200, 255, 0.95);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.settings-panel__legal-link:hover {
+  text-decoration: underline;
+}
+
+.settings-panel__legal-sep {
+  margin: 0 8px;
+  color: rgba(255, 255, 255, 0.35);
+  user-select: none;
+}
+
+.home-legal-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 4px;
+  padding: 28px 20px 40px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.home-legal-footer a {
+  color: rgba(200, 210, 255, 0.85);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.home-legal-footer a:hover {
+  text-decoration: underline;
+}
+
+.home-legal-footer__sep {
+  margin: 0 6px;
+  user-select: none;
+  opacity: 0.7;
+}
+
 .home-print-modal {
   position: fixed;
   inset: 0;
@@ -1900,6 +1950,23 @@
   opacity: 0.95;
 }
 
+.home-hero__billing-row {
+  margin: 18px auto 0;
+  text-align: center;
+}
+
+.home-hero__billing-link {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #c8d4ff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.home-hero__billing-link:hover {
+  color: #e8ecff;
+}
+
 .home-hero__cta-wrap {
   display: flex;
   justify-content: center;
@@ -2063,10 +2130,43 @@
 
 .home-overlay__card h3 { margin: 0 0 8px; }
 
+.home-overlay__billing-first {
+  margin: 0 0 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.home-overlay__billing-first-link {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #a8b8ff;
+  text-decoration: none;
+}
+
+.home-overlay__billing-first-link:hover {
+  text-decoration: underline;
+}
+
 .home-overlay__card p {
   margin: 0;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.7;
+}
+
+.home-overlay__billing-hint {
+  margin-top: 12px !important;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.home-overlay__billing-hint a {
+  color: #a8b8ff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.home-overlay__billing-hint a:hover {
+  text-decoration: underline;
 }
 
 .home-overlay__card button {

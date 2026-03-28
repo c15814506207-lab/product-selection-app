@@ -21,6 +21,9 @@ export default function AppHeader({ onLoginClick, onRegisterClick }) {
               分析工作台
             </NavLink>
           )}
+          <NavLink to="/billing" className="site-header__link">
+            计费说明
+          </NavLink>
         </nav>
 
         <div className="site-header__actions">

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState, useRef } from 'react'
-import { useOutletContext, useNavigate, useLocation } from 'react-router-dom'
+import { useOutletContext, useNavigate, useLocation, Link } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import ProductExhibitionSection from '../components/home/ProductExhibitionSection'
 import SettingsPanel from '../components/home/SettingsPanel'
@@ -25,6 +25,7 @@ const LEFT_TOP_ACTIONS = [
   { id: 'workshop', label: '工作坊', icon: 'handyman', type: 'toggle-workshop' },
   { id: 'catalog', label: '产品目录', icon: 'menu_book', type: 'open-catalog' },
   { id: 'gallery', label: '展览', icon: '▦', type: 'scroll-gallery' },
+  { id: 'billing', label: '计费说明', icon: '¥', type: 'open-billing' },
   { id: 'settings', label: '设置', icon: '⚙', type: 'open-settings' },
 ]
 
@@ -966,6 +967,10 @@ export default function HomePage() {
       setShowCatalogModal((v) => !v)
       return
     }
+    if (type === 'open-billing') {
+      navigate('/billing')
+      return
+    }
     if (type === 'open-settings') {
       closeOtherPopups('settings')
       if (e?.currentTarget) captureOriginFromEl(e.currentTarget)
@@ -1009,6 +1014,9 @@ export default function HomePage() {
               <button type="button" className="home-top-pill home-top-pill--gray" onClick={() => setShowRecharge(false)}>
                 账户余额：—
               </button>
+              <Link to="/billing" className="home-top-pill home-top-pill--gray">
+                计费说明
+              </Link>
               <button
                 type="button"
                 className="home-top-pill home-top-pill--violet"
@@ -1040,6 +1048,9 @@ export default function HomePage() {
             </>
           ) : (
             <>
+              <Link to="/billing" className="home-top-pill home-top-pill--gray">
+                计费说明
+              </Link>
               <button
                 type="button"
                 className="home-top-pill home-top-pill--gray"
@@ -1705,6 +1716,11 @@ export default function HomePage() {
         <p className="home-hero__lead">
           使用全球领先大模型，一站式实现产品分析与优化，并生成详细的市场模拟报告！
         </p>
+        <p className="home-hero__billing-row">
+          <Link to="/billing" className="home-hero__billing-link">
+            计费说明 · 积分与支付宝购买
+          </Link>
+        </p>
       </section>
 
       <a
@@ -1733,8 +1749,24 @@ export default function HomePage() {
             className="home-overlay__card home-modal--pop"
             style={{ '--modal-origin-x': `${modalOrigin.x}px`, '--modal-origin-y': `${modalOrigin.y}px` }}
           >
+            <p className="home-overlay__billing-first">
+              <Link to="/billing" onClick={() => setShowRecharge(false)} className="home-overlay__billing-first-link">
+                打开计费说明页（积分规则 / 支付宝购买）
+              </Link>
+            </p>
             <h3>充值中心</h3>
-            <p>充值功能即将接入支付通道。当前可先联系管理员开通测试额度。</p>
+            <p>在线支付即将接入。在正式开通前，如需开通或增加积分额度，请联系管理员协助开通测试额度。</p>
+            <p className="home-overlay__billing-hint">
+              扣费规则与积分说明见{' '}
+              <Link to="/billing" onClick={() => setShowRecharge(false)}>
+                计费说明
+              </Link>
+              ；已配置支付宝时可从{' '}
+              <Link to="/billing#alipay-pay" onClick={() => setShowRecharge(false)}>
+                在线购买积分
+              </Link>
+              。
+            </p>
             <button type="button" onClick={() => setShowRecharge(false)}>
               我知道了
             </button>
@@ -1752,6 +1784,18 @@ export default function HomePage() {
           onFirstRowSentinelMount={() => setSentinelMounted(true)}
           exhibitionTitleRef={exhibitionTitleRef}
         />
+
+      <footer className="home-legal-footer" aria-label="法律与计费信息">
+        <Link to="/terms">用户协议</Link>
+        <span className="home-legal-footer__sep" aria-hidden="true">
+          ·
+        </span>
+        <Link to="/privacy">隐私政策</Link>
+        <span className="home-legal-footer__sep" aria-hidden="true">
+          ·
+        </span>
+        <Link to="/billing">计费说明</Link>
+      </footer>
     </main>
   )
 }

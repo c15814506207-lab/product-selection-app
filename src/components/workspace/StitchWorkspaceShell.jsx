@@ -1288,7 +1288,7 @@ export default function StitchWorkspaceShell({
                       ? `${Math.max(0, Math.floor(accountBalance))} 积分`
                       : '—'}
                 </button>
-                <div className="pointer-events-none absolute right-0 top-[calc(100%+8px)] z-30 hidden min-w-[320px] max-w-[420px] rounded-xl border border-outline-variant/20 bg-surface-container-high/95 p-3 shadow-2xl backdrop-blur-md group-hover:block">
+                <div className="pointer-events-none absolute right-0 top-[calc(100%+8px)] z-30 hidden min-w-[320px] max-w-[420px] rounded-xl border border-outline-variant/20 bg-surface-container-high/95 p-3 shadow-2xl backdrop-blur-md group-hover:pointer-events-auto group-hover:block">
                   <div className="mb-2 text-xs font-bold text-on-surface">积分消耗记录</div>
                   <div className="max-h-56 space-y-1 overflow-auto pr-1 text-xs">
                     {Array.isArray(pointsConsumptionRecords) && pointsConsumptionRecords.length ? (
@@ -1311,6 +1311,12 @@ export default function StitchWorkspaceShell({
                       </div>
                     )}
                   </div>
+                  <Link
+                    to="/billing"
+                    className="mt-2 block text-xs font-semibold text-primary hover:underline"
+                  >
+                    查看计费说明
+                  </Link>
                 </div>
               </div>
               <button
@@ -1930,6 +1936,13 @@ export default function StitchWorkspaceShell({
                     今日消耗积分：<span className="font-bold text-primary">{todayConsumedPoints}</span>
                   </span>
                 </div>
+                <p className="mt-2 text-xs text-on-surface-variant">
+                  扣费规则与充值方式见{' '}
+                  <Link to="/billing" className="font-semibold text-primary hover:underline" onClick={() => setShowPointsModal(false)}>
+                    计费说明
+                  </Link>
+                  。
+                </p>
               </div>
               <button type="button" onClick={() => setShowPointsModal(false)}>
                 ×

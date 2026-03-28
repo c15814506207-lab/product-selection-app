@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 
 export default function SettingsPanel({ onClose }) {
@@ -233,6 +234,23 @@ export default function SettingsPanel({ onClose }) {
         <div className="settings-panel__section">
           <h4 className="settings-panel__label">通知偏好</h4>
           <p className="settings-panel__hint">功能开发中</p>
+        </div>
+
+        <div className="settings-panel__section">
+          <h4 className="settings-panel__label">法律与计费</h4>
+          <p className="settings-panel__hint settings-panel__legal-links">
+            <Link to="/terms" className="settings-panel__legal-link" onClick={onClose}>
+              用户协议
+            </Link>
+            <span className="settings-panel__legal-sep">·</span>
+            <Link to="/privacy" className="settings-panel__legal-link" onClick={onClose}>
+              隐私政策
+            </Link>
+            <span className="settings-panel__legal-sep">·</span>
+            <Link to="/billing" className="settings-panel__legal-link" onClick={onClose}>
+              计费说明
+            </Link>
+          </p>
         </div>
       </div>
 
