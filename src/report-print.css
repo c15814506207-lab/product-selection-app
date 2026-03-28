@@ -1,0 +1,29 @@
+@media print {
+  html,
+  body {
+    background: #fff !important;
+    height: auto !important;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .report-view-print-root {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 12mm 10mm 12mm !important;
+    min-height: 0 !important;
+    box-shadow: none !important;
+  }
+
+  @page {
+    margin: 12mm;
+    size: auto;
+  }
+}

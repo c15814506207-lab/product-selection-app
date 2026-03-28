@@ -1,0 +1,25 @@
+# Supabase CLI：https://supabase.com/docs/guides/cli
+# 本地调试：在项目根目录执行 supabase functions serve fill-product-from-image --env-file supabase/.env.local
+# 部署：supabase functions deploy fill-product-from-image
+# 识图函数默认：GEMINI_API_KEY=Polo SK + 请求 https://xy.poloapi.com/v1beta/models/...
+# 可选 secrets：GEMINI_API_BASE_URL / POLOAPI_BASE_URL（换 Polo 站点时）
+# 官方 Google：secrets set GEMINI_OFFICIAL_GOOGLE=true 且 GEMINI_API_KEY=AI Studio Key
+# 模型：默认 gemini-2.5-pro；与模型广场不一致时用 GEMINI_VISION_MODEL
+
+[functions.fill-product-from-image]
+verify_jwt = true
+
+[functions.purge-expired-trash-storage]
+verify_jwt = false
+
+[functions.generate-workshop-report]
+verify_jwt = true
+
+[functions.optimize-product-image]
+verify_jwt = true
+
+[functions.wallet-debit]
+verify_jwt = true
+
+[functions.wallet-refund]
+verify_jwt = true

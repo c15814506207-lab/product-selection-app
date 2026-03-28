@@ -1,0 +1,100 @@
+/* 功能页在 Stitch 外壳内的局部覆写（不改业务组件结构） */
+.stitch-workspace-root .workspace-main {
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.stitch-workspace-root .workspace-section__title {
+  color: #ffffff;
+}
+
+.stitch-workspace-root .workspace-section__desc {
+  color: #94a3b8;
+}
+
+.stitch-workspace-root .workspace-section__head {
+  border-bottom-color: rgba(72, 72, 73, 0.45);
+}
+
+.stitch-workspace-root .workspace-meta-bar {
+  background: rgba(38, 38, 39, 0.75);
+  border-color: rgba(72, 72, 73, 0.5);
+  color: #adaaab;
+}
+
+.stitch-workspace-root .app-error-banner {
+  background: rgba(185, 41, 2, 0.15);
+  border-color: rgba(255, 115, 81, 0.35);
+  color: #ffd2c8;
+}
+
+.stitch-workspace-root .app-error-banner__title {
+  color: #ff7351;
+}
+
+/* 工作台切换条在深色背景上的对比 */
+.stitch-workspace-root .workspace-switch__hint {
+  color: #adaaab;
+}
+
+.stitch-workspace-root .workspace-switch__tabs {
+  background: rgba(39, 39, 42, 0.55);
+  border-color: rgba(72, 72, 73, 0.45);
+}
+
+.stitch-workspace-root .workspace-switch__tab--active {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.stitch-workspace-root .workspace-switch__tab:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.stitch-workspace-root .workspace-switch__tab-title {
+  color: #f8fafc;
+}
+
+.stitch-workspace-root .market-mode-coming-hint {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 80;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  padding: 12px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(211, 254, 93, 0.35);
+  background: rgba(10, 10, 12, 0.78);
+  color: #d3fe5d;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  text-shadow: 0 0 18px rgba(211, 254, 93, 0.24);
+  animation: marketModeHintFade 3s ease-out forwards;
+}
+
+@keyframes marketModeHintFade {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -46%);
+  }
+  12% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  75% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -53%);
+  }
+}
