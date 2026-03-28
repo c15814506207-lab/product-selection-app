@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# 单页应用：直接访问 /workspace 或刷新时交给 index.html，避免 404
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
