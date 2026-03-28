@@ -26,10 +26,9 @@ export default function BillingPage() {
 
   useEffect(() => {
     const params = new URLSearchParams(location.search)
-    if (params.get('paid') === '1' || params.get('return') === 'alipay') {
-      setPaidNotice(true)
-      navigate('/billing', { replace: true })
-    }
+    if (params.get('paid') !== '1' && params.get('return') !== 'alipay') return
+    setPaidNotice(true)
+    navigate({ pathname: '/billing', search: '' }, { replace: true })
   }, [location.search, navigate])
 
   async function handlePack(packId) {

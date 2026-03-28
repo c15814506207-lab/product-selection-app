@@ -27,5 +27,6 @@ verify_jwt = true
 [functions.alipay-notify]
 verify_jwt = false
 
+# 网关 JWT 校验与部分浏览器/会话组合下会误报 Invalid JWT；本函数内已用 service_role + auth.getUser(token) 校验登录用户
 [functions.create-alipay-page-pay]
-verify_jwt = true
+verify_jwt = false

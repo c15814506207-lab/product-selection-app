@@ -139,8 +139,8 @@ Deno.serve(async (req: Request) => {
     const out_trade_no = `sv_${Date.now()}_${crypto.randomUUID().replace(/-/g, "").slice(0, 12)}`
     const passback = JSON.stringify({ uid: userId, points: def.points, amt: amountStr })
 
+    // 勿传 method: "GET"：SDK 会把该字段并入网关参数，覆盖 API 名 method=alipay.trade.page.pay，导致支付宝报 invalid-method
     const url = await alipaySdk.pageExec("alipay.trade.page.pay", {
-      method: "GET",
       bizContent: {
         out_trade_no,
         product_code: "FAST_INSTANT_TRADE_PAY",
