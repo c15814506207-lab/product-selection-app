@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import { requestAlipayPagePay } from '../api/alipayCheckoutClient'
 import '../styles/legalPages.css'
@@ -12,7 +12,8 @@ const PACKS = [
 
 export default function BillingPage() {
   const { user } = useAuth()
-  const [searchParams, setSearchParams] = useSearchParams()
+  const location = useLocation()
+  const navigate = useNavigate()
   const [checkoutLoading, setCheckoutLoading] = useState(null)
   const [checkoutError, setCheckoutError] = useState('')
   const [paidNotice, setPaidNotice] = useState(false)
@@ -24,14 +25,12 @@ export default function BillingPage() {
   }, [])
 
   useEffect(() => {
-    if (searchParams.get('paid') === '1' || searchParams.get('return') === 'alipay') {
+    const params = new URLSearchParams(location.search)
+    if (params.get('paid') === '1' || params.get('return') === 'alipay') {
       setPaidNotice(true)
-      const next = new URLSearchParams(searchParams)
-      next.delete('paid')
-      next.delete('return')
-      setSearchParams(next, { replace: true })
+      navigate('/billing', { replace: true })
     }
-  }, [searchParams, setSearchParams])
+  }, [location.search, navigate])
 
   async function handlePack(packId) {
     setCheckoutError('')
