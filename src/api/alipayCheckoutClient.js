@@ -30,12 +30,17 @@ export async function requestAlipayPagePay(pack) {
     throw new Error(msg)
   }
   const payload = data.url
-  // SDK 默认 POST：返回自动提交表单的 HTML；GET 时才是网关 URL（见 create-alipay-page-pay）
+  // SDK 默认 POST：返回表单 HTML。比 document.write 更稳：解析出 form 并由我们主动提交。
   if (typeof payload === 'string' && /<form/i.test(payload)) {
-    document.open()
-    document.write(payload)
-    document.close()
-  } else {
-    window.location.assign(payload)
+    const parsed = new DOMParser().parseFromString(payload, 'text/html')
+    const form = parsed.querySelector('form')
+    if (!form) throw new Error('支付宝跳转表单解析失败')
+
+    const liveForm = document.importNode(form, true)
+    liveForm.style.display = 'none'
+    document.body.appendChild(liveForm)
+    liveForm.submit()
+    return
   }
+  window.location.assign(payload)
 }
